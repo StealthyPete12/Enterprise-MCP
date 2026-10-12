@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-label="Gatehouse architecture: an AI assistant signs the user in with Keycloak, then calls Gatehouse over HTTPS with a bearer token. Gatehouse authenticates the request, applies guardrails and human approval, and its connectors reach Contoso's Helpdesk database and Directory API with their own least-privilege credentials. Every call is written to an append-only audit ledger and traced with OpenTelemetry.">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .title { font-size: 22px; font-weight: 700; fill: #0f172a; }
+      .h { font-size: 15px; font-weight: 650; fill: #0f172a; }
+      .s { font-size: 12.5px; fill: #475569; }
+      .lbl { font-size: 12.5px; font-weight: 600; fill: #334155; }
+      .group { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; fill: #64748b; }
+      .line { stroke: #334155; stroke-width: 1.6; fill: none; }
+      .dash { stroke-dasharray: 5 5; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="660" rx="16" fill="#ffffff"/>
+  <text x="40" y="52" class="title">Gatehouse architecture</text>
+
+  <!-- User's machine -->
+  <rect x="40" y="200" width="230" height="200" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="6 4"/>
+  <text x="58" y="226" class="group">USER'S MACHINE</text>
+  <rect x="60" y="250" width="190" height="110" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="155" y="290" text-anchor="middle" class="h">AI assistant</text>
+  <text x="155" y="314" text-anchor="middle" class="s">Claude · VS Code</text>
+  <text x="155" y="334" text-anchor="middle" class="s">any MCP client</text>
+
+  <!-- Keycloak -->
+  <rect x="470" y="80" width="260" height="70" rx="10" fill="#f5f3ff" stroke="#8b5cf6"/>
+  <text x="600" y="110" text-anchor="middle" class="h">Keycloak</text>
+  <text x="600" y="132" text-anchor="middle" class="s">OAuth 2.1 · PKCE · OpenID Connect</text>
+
+  <!-- Gatehouse -->
+  <rect x="380" y="190" width="440" height="330" rx="14" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <text x="400" y="218" class="group" fill="#0f766e">GATEHOUSE · ASP.NET CORE MCP SERVER</text>
+
+  <rect x="410" y="236" width="380" height="54" rx="8" fill="#ffffff" stroke="#5eead4"/>
+  <text x="430" y="259" class="h">Authentication</text>
+  <text x="430" y="278" class="s">Issuer, audience and expiry checked on every call</text>
+
+  <rect x="410" y="300" width="380" height="54" rx="8" fill="#ffffff" stroke="#5eead4"/>
+  <text x="430" y="323" class="h">3 · Guardrails</text>
+  <text x="430" y="342" class="s">Scopes · roles · record-level access · quotas</text>
+
+  <rect x="410" y="364" width="380" height="54" rx="8" fill="#ffffff" stroke="#5eead4"/>
+  <text x="430" y="387" class="h">Human approval</text>
+  <text x="430" y="406" class="s">The user confirms every change before it runs</text>
+
+  <rect x="410" y="428" width="380" height="54" rx="8" fill="#ffffff" stroke="#5eead4"/>
+  <text x="430" y="451" class="h">Connectors</text>
+  <text x="430" y="470" class="s">Service desk · employee directory</text>
+
+  <!-- Contoso systems -->
+  <rect x="900" y="190" width="260" height="230" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="918" y="216" class="group">CONTOSO SYSTEMS</text>
+  <rect x="920" y="236" width="220" height="70" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="1030" y="265" text-anchor="middle" class="h">Helpdesk database</text>
+  <text x="1030" y="287" text-anchor="middle" class="s">SQL Server · EF Core</text>
+  <rect x="920" y="326" width="220" height="70" rx="10" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="1030" y="355" text-anchor="middle" class="h">Directory API</text>
+  <text x="1030" y="377" text-anchor="middle" class="s">REST</text>
+
+  <!-- Audit and observability -->
+  <rect x="410" y="570" width="180" height="60" rx="10" fill="#fffbeb" stroke="#f59e0b"/>
+  <text x="500" y="596" text-anchor="middle" class="h">Audit ledger</text>
+  <text x="500" y="616" text-anchor="middle" class="s">append-only · SQL Server</text>
+  <rect x="610" y="570" width="180" height="60" rx="10" fill="#eff6ff" stroke="#3b82f6"/>
+  <text x="700" y="596" text-anchor="middle" class="h">OpenTelemetry</text>
+  <text x="700" y="616" text-anchor="middle" class="s">Aspire dashboard</text>
+
+  <!-- 1: sign in -->
+  <path d="M155,250 V115 H468" class="line" marker-end="url(#arrow)"/>
+  <text x="170" y="105" class="lbl">1 · Sign in, get a token for Gatehouse</text>
+
+  <!-- 2: MCP request -->
+  <path d="M250,305 H378" class="line" marker-end="url(#arrow)"/>
+  <text x="314" y="282" text-anchor="middle" class="lbl">2 · MCP request</text>
+  <text x="314" y="330" text-anchor="middle" class="s">HTTPS + bearer</text>
+  <text x="314" y="346" text-anchor="middle" class="s">token</text>
+
+  <!-- token validation keys -->
+  <path d="M600,190 V152" class="line dash" marker-end="url(#arrow)"/>
+  <text x="612" y="176" class="s">signing keys</text>
+
+
+  <!-- 4: act -->
+  <path d="M790,455 H850 V271 H918" class="line" marker-end="url(#arrow)"/>
+  <path d="M850,361 H918" class="line" marker-end="url(#arrow)"/>
+  <text x="1030" y="448" text-anchor="middle" class="lbl">4 · Gatehouse's own</text>
+  <text x="1030" y="466" text-anchor="middle" class="lbl">least-privilege credentials</text>
+
+  <!-- 5: audit and monitor -->
+  <path d="M500,520 V568" class="line" marker-end="url(#arrow)"/>
+  <path d="M700,520 V568" class="line" marker-end="url(#arrow)"/>
+  <text x="398" y="550" text-anchor="end" class="lbl">5 · Every call audited and traced</text>
+</svg>

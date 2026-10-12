@@ -28,7 +28,7 @@ Gatehouse is a Model Context Protocol (MCP) server written in C# that connects A
 ## Architecture
 
 <p align="center">
-  <img src="docs/images/gatehouse-architecture.png" width="100%" alt="Gatehouse architecture: an AI assistant authenticates with Keycloak, calls Gatehouse, which applies permission checks and guardrails before connectors reach the service desk and directory systems, with every action audited and monitored.">
+  <img src="docs/images/gatehouse-architecture.svg" width="100%" alt="Gatehouse architecture: an AI assistant authenticates with Keycloak, calls Gatehouse, which applies permission checks and guardrails before connectors reach the service desk and directory systems, with every action audited and monitored.">
 </p>
 
 1. **Authenticate.** The user signs in through Keycloak, and the AI assistant receives a token scoped to Gatehouse.

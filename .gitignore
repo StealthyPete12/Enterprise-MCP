@@ -1,0 +1,8 @@
+#keeping all the build outputs and settings 
+
+dotnet new gitignore
+dotnet new globaljson -- sdk-version 10.0.100 --roll-forward 
+latestFeature 
+dotnet new sin --name Gatehouse
+dotnet new buildprops
+dotnet new packagesprops 
